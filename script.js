@@ -1,7 +1,8 @@
 let cards = document.querySelectorAll('.card');
-let isFilppedCard = false, 
+let isFilppedCard = false, matchFull=0,
 firstCard, secondCard, stopFlipping= false;
 const successAud = document.getElementById('success');
+const successAudFull = document.getElementById('full_success');
 
 cards.forEach((card)=>{
     card.addEventListener('click', flipCard);
@@ -33,7 +34,9 @@ function checkMatching(){
         console.log("match");
         firstCard.removeEventListener('click', flipCard);
         secondCard.removeEventListener('click', flipCard);
-        successAud.play();
+        ++matchFull;
+        
+        matchFull === cards.length /2 ? successAudFull.play():successAud.play();
         resetBoard();
     } else{
        
