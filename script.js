@@ -1,14 +1,28 @@
+let 
+    isFilppedCard = false,
+    matchFull=0,
+    firstCard,
+    secondCard,
+    stopFlipping= false,
+    mins=0,
+    secs=0,
+    wrong =0;
+
 let cards = document.querySelectorAll('.card');
-let isFilppedCard = false, matchFull=0,
-firstCard, secondCard, stopFlipping= false;
 const successAud = document.getElementById('success');
 const successAudFull = document.getElementById('full_success');
-
+const minsElm = document.getElementById("min");
+const secsElm = document.getElementById("sec");
+const wrongElm = document.getElementById("wrong");
 cards.forEach((card)=>{
     card.addEventListener('click', flipCard);
 })
 
-
+let time = setInterval(()=>{
+    if(secs < 59) {++secs}else if(secs == 59){secs= 0; ++mins;}
+    secs < 10 ? secsElm.innerHTML='0' + secs: secsElm.innerHTML= secs;
+    mins < 10 ? minsElm.innerHTML="0"+mins:minsElm.innerHTML=mins;
+},1000);
 
 
 function flipCard(){
@@ -36,7 +50,7 @@ function checkMatching(){
         secondCard.removeEventListener('click', flipCard);
         ++matchFull;
         
-        matchFull === cards.length /2 ? successAudFull.play():successAud.play();
+       if( matchFull === cards.length /2 ){ successAudFull.play();clearInterval(time)}else{successAud.play();}
         resetBoard();
     } else{
        
@@ -44,7 +58,8 @@ function checkMatching(){
        setTimeout(()=>{
             firstCard.classList.remove("flipped");
             secondCard.classList.remove("flipped");
-            
+            ++wrong;
+            wrongElm.innerHTML= wrong;
             resetBoard();
         },700);
        

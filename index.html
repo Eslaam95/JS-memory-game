@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon"  href="assets/ember.svg" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kelly+Slab&family=Oswald:wght@200&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap" rel="stylesheet">
     <title>Memory Game</title>
     <link href="style.css" rel="stylesheet">
     
@@ -11,7 +14,18 @@
 </head>
 <body>
     <div class="pitch dark" >
+       
         <div class="game-cont">
+            <div id="settings">
+                <div id="time">
+                 <span>Time:</span>
+                 <span id="min">00</span>:<span id="sec">00</span>
+                </div>
+                <div id="trials">
+                    <span>Wrong Moves:</span>
+                    <span id="wrong">0</span>
+                   </div>
+            </div>
             <div class="cards-cont">
                 <div class="card" data-match="1">
                     <img src="assets/js-badge.svg" alt="" class="front face">
