@@ -5,6 +5,7 @@ let isFilppedCard = false,
   stopFlipping = false,
   mins = 0,
   secs = 0,
+  totalMoves = 0,
   wrong = 0,
   cards;
 
@@ -13,7 +14,16 @@ const successAudFull = document.getElementById("full_success");
 const minsElm = document.getElementById("min");
 const secsElm = document.getElementById("sec");
 const wrongElm = document.getElementById("wrong");
+const totalElm = document.getElementById("total");
+const topScoreElm = document.getElementById("top");
+const celebElm = document.getElementById("celebrate");
+const tryAgainElm = document.getElementById("try-again");
+const tryAgainBox = document.getElementById("again");
 
+const overlayElm = document.getElementById("overlay");
+let topScore = Number(localStorage.getItem("score"));
+let currLevelElm = document.getElementById("curr");
+topScoreElm.innerHTML = topScore;
 const imgsArr = [
   "assets/B.svg",
   "assets/C.svg",
@@ -37,14 +47,24 @@ let level = 1,
   cardsNum;
 
 function handleLevel() {
+  overlayElm.style.display = "none";
+  celebElm.style.display = "none";
+  tryAgainBox.style.display = "none";
+  currLevelElm.innerHTML = level;
   if (level == 1) {
     cardsNum = 6;
+    cont.classList.remove("level-3");
+    cont.classList.add("level-1");
   }
   if (level == 2) {
     cardsNum = 12;
+    cont.classList.remove("level-1");
+    cont.classList.add("level-2");
   }
   if (level == 3) {
     cardsNum = 16;
+    cont.classList.remove("level-2");
+    cont.classList.add("level-3");
   }
   cont.innerHTML = "";
   matchFull = 0;
@@ -99,6 +119,9 @@ function flipCard() {
 }
 
 function checkMatching() {
+  totalMoves++;
+
+  totalElm.innerHTML = totalMoves;
   if (secondCard.dataset.match === firstCard.dataset.match) {
     console.log("match");
     firstCard.removeEventListener("click", flipCard);
@@ -108,9 +131,7 @@ function checkMatching() {
     if (matchFull === cards.length / 2) {
       successAudFull.play();
 
-      level < 3 ? (level += 1) : 1;
-      handleLevel();
-      clearInterval(time);
+      level < 3 ? nextLevel() : celebrate();
     } else {
       successAud.play();
     }
@@ -138,4 +159,28 @@ function suffleCard() {
     let randOrder = Math.floor(Math.random() * cardsNum);
     card.style.order = randOrder;
   });
+}
+tryAgainElm.addEventListener("click", () => {
+  level = 1;
+  totalElm.innerHTML = "";
+  wrongElm.innerHTML = "";
+  handleLevel();
+});
+function celebrate() {
+  topScore < 10 || totalMoves < topScore ? updateScore() : "";
+  totalMoves = 0;
+  wrong = 0;
+  overlayElm.style.display = "block";
+  celebElm.style.display = "block";
+  tryAgainBox.style.display = "flex";
+  clearInterval(time);
+}
+function nextLevel() {
+  level++;
+  setTimeout(handleLevel, 2000);
+}
+function updateScore() {
+  localStorage.setItem("score", totalMoves);
+  topScore = Number(localStorage.getItem("score"));
+  topScoreElm.innerHTML = topScore;
 }

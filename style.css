@@ -20,13 +20,23 @@ margin:auto;}*/
   width: 50vw;
   margin: 20px auto;
   padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-#settings div {
+#trials * {
+  color: orangered;
+}
+#scores * {
+  color: blue;
+}
+/* #settings div {
   display: inline-block;
 }
 #settings div#trials {
   float: right;
-}
+} */
 #cards-cont {
   display: flex;
   flex-wrap: wrap;
@@ -36,10 +46,23 @@ margin:auto;}*/
   max-height: 80vh;
   perspective: 1000px;
 }
+#cards-cont.level-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+#cards-cont.level-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+#cards-cont.level-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 .card {
   margin: auto;
-  width: calc(25% - 10px);
-  height: calc(33.333% - 10px);
+  /* width: calc(25% - 10px);
+  height: calc(33.333% - 10px); */
   position: relative;
   margin: 5px;
   background-color: #1c7ccc;
@@ -82,8 +105,8 @@ margin:auto;}*/
     padding: 5px;
   }
 }
-@media all and (max-width: 480px) {
-  .cards-cont {
+@media all and (max-width: 768px) {
+  #cards-cont {
     width: 80vw;
     height: 100vw;
   }
@@ -93,4 +116,70 @@ margin:auto;}*/
   .card .face {
     padding: 5px;
   }
+}
+
+#celebrate {
+  position: fixed;
+  top: 120%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  animation: slide 1s linear forwards;
+  /* display: none; */
+}
+#again {
+  position: fixed;
+  top: 30%;
+  left: calc(50% - 150px);
+  width: 300px;
+  height: 100px;
+  z-index: 15;
+  background-color: #fff;
+  padding: 60px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* display: none; */
+}
+#again p {
+  font-size: 1.5rem;
+  display: block;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}
+#again button {
+  font-size: 1.2rem;
+  padding: 5px 10px;
+  background-color: #1c7ccc;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+@keyframes slide {
+  0% {
+    top: 100%;
+  }
+  100% {
+    top: 0;
+  }
+}
+.level-num {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  background: #fff;
+  padding: 10px 20px;
+  left: 0;
 }
