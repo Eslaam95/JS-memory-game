@@ -45,7 +45,9 @@ const imgsArr = [
 const cont = document.getElementById("cards-cont");
 let level = 1,
   cardsNum;
-
+overlayElm.style.display = "none";
+celebElm.style.display = "none";
+tryAgainBox.style.display = "none";
 function handleLevel() {
   overlayElm.style.display = "none";
   celebElm.style.display = "none";
