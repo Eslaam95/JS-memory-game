@@ -164,8 +164,9 @@ function suffleCard() {
 }
 tryAgainElm.addEventListener("click", () => {
   level = 1;
-  totalElm.innerHTML = "";
-  wrongElm.innerHTML = "";
+  totalElm.innerHTML = "0";
+  wrongElm.innerHTML = "0";
+  clearInterval(time);
   handleLevel();
 });
 function celebrate() {
