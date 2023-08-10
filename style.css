@@ -113,6 +113,9 @@ margin:auto;}*/
   #settings {
     width: 80vw;
   }
+  div#settings div {
+    width: 45%;
+  }
   .card .face {
     padding: 5px;
   }
