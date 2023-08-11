@@ -1,19 +1,13 @@
-body {
-  background: #060ab2;
-}
 * {
   box-sizing: border-box;
   font-family: "Oswald", sans-serif;
   font-weight: bold;
   letter-spacing: 0.1rem;
 }
-/*.pitch{width: 95vw;
-    height: 95vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-margin:auto;}*/
-/*.game-cont{}*/
+body {
+  background: #060ab2;
+}
+/*start settings bar*/
 #settings {
   background: #fff;
   border-radius: 2px;
@@ -31,12 +25,8 @@ margin:auto;}*/
 #scores * {
   color: blue;
 }
-/* #settings div {
-  display: inline-block;
-}
-#settings div#trials {
-  float: right;
-} */
+/*end settings bar*/
+/*start cards container*/
 #cards-cont {
   display: flex;
   flex-wrap: wrap;
@@ -58,11 +48,8 @@ margin:auto;}*/
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-
 .card {
   margin: auto;
-  /* width: calc(25% - 10px);
-  height: calc(33.333% - 10px); */
   position: relative;
   margin: 5px;
   background-color: #1c7ccc;
@@ -92,7 +79,7 @@ margin:auto;}*/
 .card.flipped {
   transform: rotateY(180deg);
 }
-
+/*end cards container*/
 @media all and (max-width: 890px) and (min-width: 481px) {
   .cards-cont {
     width: 80vw;
@@ -129,7 +116,6 @@ margin:auto;}*/
   height: 100%;
   z-index: 5;
   animation: slide 1s linear forwards;
-  /* display: none; */
 }
 #again {
   position: fixed;
