@@ -117,6 +117,8 @@ function setTimer() {
 }
 function clearTimer() {
   clearInterval(time);
+  secs = 0;
+  mins = 0;
   secsElm.innerHTML = "00";
   minsElm.innerHTML = "00";
 }
