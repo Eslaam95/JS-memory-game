@@ -19,6 +19,7 @@
   <body>
     <div class="pitch dark">
       <div class="game-cont">
+        <!-- Start settings bar-->
         <div id="settings">
           <div id="time">
             <span>Time:</span>
@@ -37,21 +38,26 @@
             <span id="top">0</span>
           </div>
         </div>
-        <img
-          id="celebrate"
-          src="assets/scratch-studio-688386.png"
-          alt="celebrating"
-        />
-        <div id="overlay"></div>
-        <div id="again">
-          <p>Let's get better scores!</p>
-          <button id="try-again">Play Again</button>
-        </div>
+        <!-- End settings bar-->
+
         <div id="cards-cont">
           <!--
           CARDS WILL BE ADDED HERE BY JS BASED ON THE LEVEL OF DIFFCULTY
         --></div>
       </div>
+      <!-- Start celebration screen-->
+      <img
+        id="celebrate"
+        src="assets/scratch-studio-688386.png"
+        alt="celebrating"
+      />
+      <div id="overlay"></div>
+      <div id="again">
+        <p>Let's get better scores!</p>
+        <button id="try-again">Play Again</button>
+      </div>
+      <!-- End celebration screen-->
+
       <p class="level-num">Level: <span id="curr"></span>of 3</p>
       <audio
         id="full_success"

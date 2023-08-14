@@ -146,6 +146,7 @@ body {
   color: #fff;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 #overlay {
   position: fixed;
